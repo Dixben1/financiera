@@ -182,18 +182,80 @@ elif st.session_state.pagina_actual == "💰 Rentista":
 # === PÁGINA: ACADEMIA ===
 elif st.session_state.pagina_actual == "📘 Academia":
     st.title("📘 Academia Fortaleza")
-    st.markdown("### El manual del piloto para no perder el rumbo.")
-    st.markdown("Aquí reside la filosofía, la estrategia y la lógica matemática de tu sistema.")
+    st.markdown("### El manual del piloto.")
     
-    # Dividimos el conocimiento en 4 áreas clave
-    tab_filosofia, tab_activos, tab_logica, tab_glosario = st.tabs([
+    # AHORA SON 5 PESTAÑAS (Agregamos "📱 Manual App" al principio)
+    tab_guia, tab_filosofia, tab_activos, tab_logica, tab_glosario = st.tabs([
+        "📱 Manual App",
         "🧠 Filosofía", 
         "🏛️ Tus Activos", 
         "🧮 El Algoritmo", 
         "📚 Glosario"
     ])
 
-    # --- PESTAÑA 1: FILOSOFÍA ---
+    # --- NUEVA PESTAÑA: MANUAL DE LA APP ---
+    with tab_guia:
+        st.header("🗺️ Tour por tu Centro de Comando")
+        st.markdown("Bienvenido a **Fortaleza 2035**. Esta app no es un broker, es tu **estratega**. Aquí te explico cómo usar cada habitación de este cuartel.")
+        
+        st.info("💡 **Flujo de Trabajo Mensual:** Entras a la App ➝ Vas a la Calculadora ➝ Generas la lista ➝ Ejecutas en Hapi ➝ Cierras la App.")
+
+        st.subheader("Los 6 Módulos Explicados")
+
+        col_a, col_b = st.columns(2)
+        
+        with col_a:
+            with st.expander("📊 1. Visión General (Dashboard)", expanded=True):
+                st.markdown("""
+                **¿Qué es?** Tu panel de control.
+                **¿Qué veo aquí?**
+                * **Donut Chart:** Veo si tengo mucho de algo (ej. mucho MELI) o poco de algo (ej. poco VOO).
+                * **Patrimonio:** Cuánto dinero tengo en total sumando todo.
+                * **KPIs:** Datos rápidos de salud financiera.
+                """)
+            
+            with st.expander("🧮 2. La Calculadora (El Cerebro)"):
+                st.markdown("""
+                **¿Qué es?** La herramienta más importante.
+                **¿Cómo se usa?**
+                1. Ingresas cuánto dinero vas a depositar (ej. $100).
+                2. La app hace la matemática compleja.
+                3. Te da una **Tabla de Compra** exacta.
+                **Regla:** Solo haz lo que dice la tabla. No improvise.
+                """)
+                
+            with st.expander("📡 3. Radar de Mercado"):
+                st.markdown("""
+                **¿Qué es?** Tu ventana al mundo exterior.
+                **Semáforo VIX:**
+                * 🔴 **Rojo:** ¡Compra! (Pánico en el mercado).
+                * 🟢 **Verde:** Precaución (Todo está caro).
+                **Noticias:** Solo muestra info de TUS empresas, ignorando el ruido.
+                """)
+
+        with col_b:
+            with st.expander("💰 4. El Rentista (Dividendos)"):
+                st.markdown("""
+                **¿Qué es?** Tu inyección de motivación.
+                **Sueldo Pasivo:** Calcula cuánto ganarías al año si no hicieras nada más que cobrar dividendos.
+                **Objetivo:** Ver este número crecer centavo a centavo cada mes.
+                """)
+
+            with st.expander("💾 5. Memoria y Datos"):
+                st.markdown("""
+                **¿Qué es?** Tu caja fuerte.
+                **Funciones:**
+                * **Descargar Plan:** Baja un Excel con tus órdenes de compra.
+                * **Backup:** (Futuro) Guardar tu historial en la nube.
+                """)
+
+            with st.expander("📘 6. Academia (Estás aquí)"):
+                st.markdown("""
+                **¿Qué es?** Tu biblioteca.
+                Si olvidas por qué compramos acciones pequeñas (AVUV) o quién es Benjamin Graham, vienes aquí a repasarlo.
+                """)
+
+    # --- PESTAÑA 2: FILOSOFÍA ---
     with tab_filosofia:
         st.header("Los Dos Pilares")
         col1, col2 = st.columns(2)
@@ -204,8 +266,7 @@ elif st.session_state.pagina_actual == "📘 Academia":
                 st.caption("El Padre del Value Investing")
                 st.markdown("""
                 * **Enfoque:** Seguridad y Valor.
-                * **Regla de Oro:** Compra $1 dólar de valor por $0.50 centavos.
-                * **Tu Cartera:** Representado por **SCHD, BAC y AVUV**.
+                * **Tu Cartera:** **SCHD, BAC, AVUV**.
                 * **Mentalidad:** "Si el mercado cae, me alegro porque compro barato".
                 """)
         
@@ -215,78 +276,48 @@ elif st.session_state.pagina_actual == "📘 Academia":
                 st.caption("El Padre Rico")
                 st.markdown("""
                 * **Enfoque:** Flujo de Caja y Activos.
-                * **Regla de Oro:** Los activos ponen dinero en tu bolsillo.
-                * **Tu Cartera:** Representado por **O (Rentas), MELI (Negocio) y QQQ (Futuro)**.
+                * **Tu Cartera:** **O, MELI, QQQ**.
                 * **Mentalidad:** "No trabajo por dinero, mi dinero trabaja para mí".
                 """)
-        
-        st.info("💡 **Tu Estrategia Híbrida:** Usamos la seguridad de Graham para no quebrar, y la agresividad de Kiyosaki para crecer.")
 
-    # --- PESTAÑA 2: TUS ACTIVOS ---
+    # --- PESTAÑA 3: TUS ACTIVOS ---
     with tab_activos:
-        st.header("¿Qué tienes y por qué?")
-        st.markdown("Tu ejército de 7 soldados explicado uno por uno.")
-
+        st.header("Tu Ejército de 7 Soldados")
         # Núcleo
-        with st.expander("🛡️ VOO - El Núcleo (S&P 500) | 45%", expanded=True):
-            st.write("Son las 500 empresas más grandes de EE.UU. Es la apuesta a que la economía americana seguirá dominando. Si VOO cae a cero, el dinero ya no importa.")
-        
+        with st.expander("🛡️ VOO - El Núcleo (S&P 500) | 45%"):
+            st.write("Las 500 empresas más grandes de EE.UU. Seguridad total.")
         # Crecimiento
         with st.expander("🚀 QQQ - El Motor (Nasdaq 100) | 20%"):
-            st.write("Tecnología pura. Apple, Microsoft, Nvidia. Aquí está el crecimiento explosivo, pero también la volatilidad. Es el cohete de la cartera.")
-            
+            st.write("Tecnología pura (Apple, Nvidia). Crecimiento explosivo.")
         # Dividendos & Valor
         with st.expander("💰 SCHD - La Defensa (Dividendos) | 10%"):
-            st.write("Empresas aburridas pero ricas (Coca-Cola, Pepsi, Home Depot) que pagan dividendos crecientes. Protege cuando la tecnología cae.")
-            
+            st.write("Empresas estables que pagan dividendos crecientes.")
         with st.expander("💎 AVUV - El Outsider (Small Cap Value) | 10%"):
-            st.write("Empresas pequeñas y baratas. Históricamente, este sector es el que más dinero da a largo plazo (más que el S&P 500), aunque es volátil.")
-            
-        # Satélites (Acciones Individuales)
+            st.write("Empresas pequeñas y baratas. Potencial de retorno masivo.")
+        # Satélites
         with st.expander("🐆 MELI - El Ataque (MercadoLibre) | 5%"):
-            st.write("El Amazon de Latinoamérica. Crecimiento agresivo en mercados emergentes. Alto riesgo, alta recompensa.")
-            
+            st.write("El Amazon de LatAm. Alto riesgo, alta recompensa.")
         with st.expander("🏦 BAC - El Valor (Bank of America) | 5%"):
-            st.write("La apuesta favorita de Warren Buffett. Un banco sólido comprado a buen precio. Se beneficia cuando suben las tasas de interés.")
-            
+            st.write("Banco sólido tipo Warren Buffett. Gana con tasas altas.")
         with st.expander("🏠 O - El Casero (Realty Income) | 5%"):
-            st.write("Dueño de miles de propiedades comerciales (7-Eleven, Walmart). Te paga alquiler (dividendos) todos los meses.")
+            st.write("Bienes Raíces. Te paga alquiler mensual.")
 
-    # --- PESTAÑA 3: LÓGICA DEL ALGORITMO ---
+    # --- PESTAÑA 4: LÓGICA DEL ALGORITMO ---
     with tab_logica:
-        st.header("¿Cómo decide la App qué comprar?")
-        st.markdown("No usamos corazonadas. Usamos el algoritmo de **'Llenado de Vasos' (Waterfilling)**.")
-        
-        st.markdown("""
-        1.  **Imagina 7 vasos:** Cada activo (VOO, QQQ, etc.) es un vaso que debe tener un nivel de agua específico (tu % ideal).
-        2.  **El nivel actual:** Algunos vasos tienen menos agua de la que deberían (porque la acción bajó de precio o porque no has comprado en mucho tiempo).
-        3.  **El chorro de agua ($):** Tu depósito mensual es una jarra de agua nueva.
-        4.  **La decisión:** La App vierte el agua **SOLO en los vasos que están más vacíos** respecto a su marca ideal.
-        """)
-        
-        st.warning("""
-        **¿Por qué es genial esto?**
-        Porque te obliga matemáticamente a **COMPRAR BARATO**. 
-        Si QQQ sube mucho, su vaso se llena solo (sube de valor). La App dejará de mandar dinero ahí y lo mandará a lo que se haya quedado atrás (ej. SCHD).
-        """)
+        st.header("¿Cómo funciona la Calculadora?")
+        st.markdown("Usamos el algoritmo de **'Llenado de Vasos' (Waterfilling)**.")
+        st.info("La App vierte tu dinero nuevo ($) SOLO en los activos que están por debajo de su porcentaje ideal. Te obliga matemáticamente a comprar barato.")
 
-    # --- PESTAÑA 4: GLOSARIO ---
+    # --- PESTAÑA 5: GLOSARIO ---
     with tab_glosario:
         st.header("Diccionario Financiero")
-        
-        # Usamos una lista de definiciones limpia
         terms = {
-            "ETF (Exchange Traded Fund)": "Una canasta de acciones. Compras una acción del ETF y eres dueño de cientos de empresas a la vez (ej. VOO).",
-            "Yield (Rentabilidad por Dividendo)": "El interés anual que te paga una empresa solo por tenerla. Si tienes $100 y el yield es 3%, te pagan $3 al año.",
-            "VIX (Índice del Miedo)": "Mide qué tan asustados están los inversores. VIX alto = Miedo (Oportunidad de compra). VIX bajo = Calma (Todo caro).",
-            "Bull Market (Toro)": "Cuando el mercado sube con fuerza y optimismo.",
-            "Bear Market (Oso)": "Cuando el mercado cae más del 20% y hay pesimismo.",
-            "Broker (Hapi)": "La aplicación intermediaria que te permite comprar y vender acciones en la bolsa de Nueva York.",
-            "Rebalanceo": "El acto de vender lo que subió o comprar lo que bajó para volver a tus porcentajes originales."
+            "ETF": "Una canasta de muchas acciones juntas (VOO, QQQ).",
+            "Yield": "El interés anual que te paga una acción.",
+            "VIX": "Medidor de miedo. Alto = Bueno para comprar.",
+            "Rebalanceo": "Volver a tus porcentajes originales."
         }
-        
-        for term, definition in terms.items():
-            st.markdown(f"**{term}:**")
-            st.caption(definition)
+        for term, defi in terms.items():
+            st.markdown(f"**{term}:** {defi}")
             st.divider()
 
